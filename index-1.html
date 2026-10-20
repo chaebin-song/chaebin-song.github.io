@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<meta name="description" content="Chaebin Song, Ph.D. student in the Hydraulic Engineering Laboratory, Changwon National University. Gas-liquid two-phase flow, PIV, LSPIV.">
+<title>Chaebin Song</title>
+<style>
+/* Layout: intro band (text left, square portrait right) → interests/education strip → single reading column with year-indexed lists */
+:root {
+  --bg: #FFFFFF;
+  --band: #F3F6F9;
+  --ink: #191D22;
+  --muted: #646C76;
+  --line: #E2E6EA;
+  --accent: #1F5BC4;
+  --accent-soft: #E8EFFB;
+  --sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111317; --band: #171B21; --ink: #E7E9EC; --muted: #9AA2AC; --line: #283039;
+    --accent: #84A9F2; --accent-soft: #1A2539;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111317; --band: #171B21; --ink: #E7E9EC; --muted: #9AA2AC; --line: #283039;
+  --accent: #84A9F2; --accent-soft: #1A2539;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
+}
+
+/* navbar */
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--bg);
+}
+.nav {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 58px; }
+.brand { font-weight: 700; font-size: 16px; color: var(--ink); white-space: nowrap; letter-spacing: -0.01em; }
+.menu { display: flex; gap: 4px; font-size: 14.5px; font-weight: 500; overflow-x: auto; scrollbar-width: none; }
+.menu::-webkit-scrollbar { display: none; }
+.menu a { color: var(--muted); white-space: nowrap; padding: 6px 12px; border-radius: 6px; }
+.menu a:hover { color: var(--ink); background: var(--band); }
+
+/* intro */
+.intro { padding-block: 64px 56px; }
+.intro .wrap { display: grid; grid-template-columns: 240px 1fr; gap: 56px; align-items: center; }
+.intro-text { min-width: 0; }
+.kicker { margin: 0 0 10px; font-size: 14px; font-weight: 600; color: var(--accent); letter-spacing: 0.02em; }
+h1 { margin: 0; font-size: 46px; line-height: 1.1; font-weight: 800; letter-spacing: -0.035em; }
+.aff { margin: 14px 0 0; font-size: 17px; color: var(--muted); line-height: 1.55; }
+.aff b { color: var(--ink); font-weight: 600; }
+.bio { margin: 26px 0 0; max-width: 60ch; }
+.bio p { margin: 0 0 12px; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 16px 0 0; font-size: 15px; }
+.links a, .links span { display: inline-flex; align-items: center; gap: 7px; }
+.links svg { width: 17px; height: 17px; flex: none; }
+.links .orcid { color: #A6CE39; }
+.links .mail { color: var(--muted); }
+.links span { color: var(--ink); user-select: all; }
+.portrait {
+  order: -1; width: 100%; max-width: 240px; aspect-ratio: 3 / 4; overflow: hidden;
+  border-radius: 4px; border: 1px solid var(--line); background: #FEFEFE;
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* strip */
+.strip { background: var(--band); border-block: 1px solid var(--line); }
+.strip .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding-block: 36px; }
+.strip .wrap > div { min-width: 0; }
+.strip h2 { margin: 0 0 14px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span {
+  font-size: 14.5px; padding: 5px 12px; border-radius: 6px;
+  background: var(--bg); border: 1px solid var(--line);
+}
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.timeline li { display: grid; grid-template-columns: 96px 1fr; gap: 14px; line-height: 1.5; }
+.timeline .when { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 1px; }
+.timeline .deg { font-weight: 600; display: block; }
+.timeline .sch { font-size: 14px; color: var(--muted); display: block; }
+
+/* sections */
+.sec { padding-block: 64px 8px; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 2px solid var(--ink); padding-bottom: 10px; margin-bottom: 4px; }
+.sec-head h2 { margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.025em; }
+.sec-head .count { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.sub { margin: 32px 0 2px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+.list { list-style: none; margin: 0; padding: 0; }
+.list li {
+  display: grid; grid-template-columns: 64px 1fr; gap: 20px;
+  padding-block: 16px; border-bottom: 1px solid var(--line);
+}
+.list li:last-child { border-bottom: 0; }
+.yr { font-size: 15px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 1px; }
+.it { min-width: 0; }
+.t { display: block; font-size: 16.5px; font-weight: 600; line-height: 1.5; color: var(--ink); }
+a.t:hover { color: var(--accent); }
+a.t .ext {
+  display: inline-block; margin-left: 6px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em;
+  padding: 1px 6px; border-radius: 4px; vertical-align: 2px;
+  color: var(--accent); background: var(--accent-soft);
+}
+.a { display: block; margin-top: 4px; font-size: 14.5px; color: var(--muted); }
+.a b { color: var(--ink); font-weight: 700; }
+.v { display: block; font-size: 14.5px; color: var(--muted); }
+.v i { color: var(--ink); }
+.flag {
+  display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 600;
+  padding: 2px 9px; border-radius: 4px; line-height: 1.6;
+}
+.flag.award { background: var(--accent-soft); color: var(--accent); }
+.flag.status { border: 1px solid var(--line); color: var(--muted); }
+
+.awards .n { display: block; font-weight: 600; line-height: 1.5; }
+.awards .d { display: block; font-size: 14.5px; color: var(--muted); margin-top: 2px; }
+.awards .p { display: block; font-size: 14.5px; color: var(--ink); margin-top: 4px; }
+.awards .p::before { content: "Paper: "; color: var(--muted); }
+
+.contact { padding-block: 20px 0; display: grid; gap: 4px; }
+.contact p { margin: 0; }
+.contact .k { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+footer { margin-top: 72px; border-top: 1px solid var(--line); }
+footer .wrap { padding-block: 24px 40px; font-size: 13.5px; color: var(--muted); }
+
+@media (max-width: 820px) {
+  .intro .wrap { grid-template-columns: 190px 1fr; gap: 32px; }
+  h1 { font-size: 38px; }
+  .strip .wrap { grid-template-columns: 1fr; gap: 32px; }
+}
+@media (max-width: 600px) {
+  .nav .wrap { flex-direction: column; align-items: stretch; gap: 0; padding-block: 10px 4px; }
+  .menu { margin-left: -9px; font-size: 14px; gap: 0; }
+  .menu a { padding: 6px 9px; }
+  .intro { padding-block: 32px 40px; }
+  .intro .wrap { grid-template-columns: 1fr; gap: 24px; }
+  .portrait { max-width: 168px; order: -1; }
+  h1 { font-size: 34px; }
+  .sec { padding-block: 48px 4px; }
+  .sec-head h2 { font-size: 22px; }
+  .list li { grid-template-columns: 1fr; gap: 2px; }
+  .yr { font-size: 13.5px; }
+  .t { font-size: 16px; }
+  .timeline li { grid-template-columns: 84px 1fr; }
+}
+</style>
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Chaebin Song</a>
+    <div class="menu">
+      <a href="#publications">Publications</a>
+      <a href="#presentations">Presentations</a>
+      <a href="#awards">Awards</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="intro">
+    <div class="wrap">
+      <div class="intro-text">
+        <p class="kicker">Two-phase flow · Experimental hydraulics</p>
+        <h1>Chaebin Song</h1>
+        <p class="aff"><b>Ph.D. Student</b>, Hydraulic Engineering Laboratory<br>Department of Civil Engineering, Changwon National University</p>
+        <p class="links">
+          <span><svg class="mail" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>songchaebiin@gmail.com</span>
+          <a href="https://orcid.org/0009-0007-7133-9991" target="_blank" rel="noopener"><svg class="orcid" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="currentColor"/><path fill="#fff" d="M7.2 7.6h1.5v9.3H7.2zM7.95 5.2a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9zM10.5 7.6h4c3.8 0 5.5 2.7 5.5 4.65 0 2.1-1.65 4.65-5.5 4.65h-4zm1.5 1.35v6.6h2.4c3.4 0 4.15-2.6 4.15-3.3 0-1.15-.73-3.3-4.1-3.3z"/></svg>0009-0007-7133-9991</a>
+        </p>
+        <div class="bio">
+          <p>I am a Ph.D. student in the Hydraulic Engineering Laboratory at Changwon National University. My research centers on gas–liquid two-phase flow in pipe systems, with a focus on how entrained air alters flow structure and hydraulic performance in urban drainage and underground flood-control infrastructure.</p>
+          <p>In the laboratory, I use image-based measurement and analysis, including PIV and spectral analysis of flow fields, to characterize two-phase flow. Alongside this work, I carry out field surveys for funded research projects, covering flood safety assessment of river facilities, sediment and mixing monitoring in rivers and lakes, and LSPIV-based surface velocity and discharge measurement. I have also worked on hydraulic experiments for underground drainage tunnels and on urban flood modeling.</p>
+        </div>
+      </div>
+      <div class="portrait"><img src="data:image/jpeg;base64,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" alt="Portrait of Chaebin Song"></div>
+    </div>
+  </header>
+
+  <div class="strip">
+    <div class="wrap">
+      <div>
+        <h2>Research Interests</h2>
+        <div class="chips">
+          <span>Gas–liquid two-phase flow</span>
+          <span>PIV</span>
+          <span>LSPIV</span>
+          <span>Spectral analysis</span>
+          <span>CFD</span>
+        </div>
+      </div>
+      <div>
+        <h2>Education</h2>
+        <ul class="timeline">
+          <li><span class="when">2026 – present</span><span><span class="deg">Ph.D. in Civil Engineering</span><span class="sch">Changwon National University</span></span></li>
+          <li><span class="when">2026</span><span><span class="deg">M.S. in Civil Engineering</span><span class="sch">Changwon National University</span></span></li>
+          <li><span class="when">2024</span><span><span class="deg">B.S. in Civil Engineering</span><span class="sch">Changwon National University</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec" id="publications">
+    <div class="wrap">
+      <div class="sec-head"><h2>Publications</h2></div>
+
+      <p class="sub">SCIE Journal Articles</p>
+      <ul class="list">
+        <li><span class="yr">2026</span><span class="it">
+          <a class="t" href="https://doi.org/10.1016/j.ijmultiphaseflow.2026.105904" target="_blank" rel="noopener">Dual-index spectral characterization of the phase transition layer in horizontal air-water plug and slug flow<span class="ext">DOI ↗</span></a>
+          <span class="a"><b>Song, C.</b>, Kim, S., Kim, M., and Lyu, S.</span>
+          <span class="v"><i>International Journal of Multiphase Flow</i>, Vol. 204, 105904</span>
+        </span></li>
+      </ul>
+
+      <p class="sub">KCI Journal Articles (in Korean)</p>
+      <ul class="list">
+        <li><span class="yr">2026</span><span class="it">
+          <span class="t">Experimental study on system resistance and conveyance capacity reduction in horizontal pipelines under air inflow</span>
+          <span class="a">Kim, S., <b>Song, C.</b>, Kim, M., and Lyu, S.</span>
+          <span class="v"><i>Journal of Korea Water Resources Association</i>, Vol. 59, No. 12</span>
+        </span></li>
+        <li><span class="yr">2026</span><span class="it">
+          <a class="t" href="https://doi.org/10.3741/JKWRA.2026.59.7.691" target="_blank" rel="noopener">Evaluation of effective flow area in horizontal two-phase flow using frequency analysis<span class="ext">DOI ↗</span></a>
+          <span class="a"><b>Song, C.</b>, Kim, S., Kim, M., Ko, J., and Lyu, S.</span>
+          <span class="v"><i>Journal of Korea Water Resources Association</i>, Vol. 59, No. 7, pp. 691–701</span>
+          <span class="flag award">Outstanding Student Paper Award</span>
+        </span></li>
+        <li><span class="yr">2026</span><span class="it">
+          <a class="t" href="https://doi.org/10.3741/JKWRA.2026.59.1.51" target="_blank" rel="noopener">An experimental study on gas behavior and effective flow area for liquid in horizontal two-phase flow<span class="ext">DOI ↗</span></a>
+          <span class="a"><b>Song, C.</b>, Kim, S., Kim, M., and Lyu, S.</span>
+          <span class="v"><i>Journal of Korea Water Resources Association</i>, Vol. 59, No. 1, pp. 51–64</span>
+        </span></li>
+        <li><span class="yr">2025</span><span class="it">
+          <a class="t" href="https://www.kwra.or.kr/media/17/publication/2025/06/27/Vol.58_No.7_19.pdf" target="_blank" rel="noopener">Full-scale experimental study on the hydraulic characteristics of an underground diversion tunnel<span class="ext">PDF ↗</span></a>
+          <span class="a">Ko, J., <b>Song, C.</b>, Kim, S., Kim, M., Lyu, S., Seong, H., Seo, Y., and Kwon, Y.</span>
+          <span class="v"><i>Water for Future</i>, Vol. 58, No. 7, pp. 19–29</span>
+        </span></li>
+        <li><span class="yr">2024</span><span class="it">
+          <a class="t" href="https://doi.org/10.3741/JKWRA.2024.57.S-1.1231" target="_blank" rel="noopener">The evaluation of flood protection performance for coastal urban streams under influence of tidal levels<span class="ext">DOI ↗</span></a>
+          <span class="a">Choi, S., Ko, J., <b>Song, C.</b>, and Lyu, S.</span>
+          <span class="v"><i>Journal of Korea Water Resources Association</i>, Vol. 57, No. S-1, pp. 1231–1241</span>
+        </span></li>
+      </ul>
+
+      <p class="sub">Manuscripts Under Review</p>
+      <ul class="list">
+        <li><span class="yr">2026</span><span class="it">
+          <span class="t">Image-based population characterization of elongated bubbles in horizontal plug and slug flow</span>
+          <span class="a"><b>Song, C.</b>, Kim, S., Kim, M., and Lyu, S.</span>
+          <span class="v"><i>Flow Measurement and Instrumentation</i> (SCIE), under review</span>
+        </span></li>
+      </ul>
+
+      <p class="sub">Thesis</p>
+      <ul class="list">
+        <li><span class="yr">2026</span><span class="it">
+          <span class="t">Experimental study on the dynamic behavior of horizontal pipe flow with air entrainment</span>
+          <span class="v">M.S. Thesis, Changwon National University</span>
+        </span></li>
+        <li><span class="yr">2023</span><span class="it">
+          <span class="t">A study of velocity and flow discharge calculation using image processing technique</span>
+          <span class="a"><b>Song, C.</b>, Moon, S., and Park, G.</span>
+          <span class="v">B.S. Thesis, Changwon National University</span>
+        </span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="presentations">
+    <div class="wrap">
+      <div class="sec-head"><h2>Conference Presentations</h2></div>
+
+      <p class="sub">International Conferences</p>
+      <ul class="list">
+        <li><span class="yr">2026</span><span class="it">
+          <a class="t" href="https://dfd-meeting.aps.org/dfd/2026/events/K01/83" target="_blank" rel="noopener">Liquid holdup characterization in horizontal two-phase slug flow via image-based bubble geometry measurement<span class="ext">Abstract ↗</span></a>
+          <span class="a"><b>Song, C.</b>, Kim, S., Kim, M., and Lyu, S.</span>
+          <span class="v">79th Annual Meeting of the APS Division of Fluid Dynamics (DFD), Orlando, FL, USA · Poster, November 2026</span>
+        </span></li>
+        <li><span class="yr">2026</span><span class="it">
+          <span class="t">Pressure drop and conveyance capacity under air inflow in urban stormwater drainage systems</span>
+          <span class="a">Kim, S., <b>Song, C.</b>, Kim, M., and Lyu, S.</span>
+          <span class="v">IWA World Water Congress &amp; Exhibition, Glasgow, UK</span>
+        </span></li>
+        <li><span class="yr">2025</span><span class="it">
+          <a class="t" href="https://www.iahr.org/library/info?pid=37814" target="_blank" rel="noopener">Velocity structure measurement for water flow with air bubbles in a horizontal pipe<span class="ext">Abstract ↗</span></a>
+          <span class="a"><b>Song, C.</b>, Ko, J. S., Choi, S. H., and Lyu, S.</span>
+          <span class="v">41st IAHR World Congress, Singapore (Book of Extended Abstracts)</span>
+        </span></li>
+      </ul>
+
+      <p class="sub">Domestic Conferences (in Korean)</p>
+      <ul class="list">
+        <li><span class="yr">2026</span><span class="it">
+          <span class="t">Analysis of the effective conveyance cross-section under air conditions in sewer pipes</span>
+          <span class="a"><b>Song, C.</b>, Kim, S., Kim, M., and Lyu, S.</span>
+          <span class="v">KSCE Annual Conference</span>
+        </span></li>
+        <li><span class="yr">2026</span><span class="it">
+          <span class="t">SWMM parameter optimization reflecting rainfall characteristics</span>
+          <span class="a">Kim, M., Kim, S., <b>Song, C.</b>, and Lyu, S.</span>
+          <span class="v">KSCE Busan–Ulsan–Gyeongnam Convention</span>
+        </span></li>
+        <li><span class="yr">2026</span><span class="it">
+          <span class="t">Pressure measurement under air inflow in a deep underground drainage tunnel model</span>
+          <span class="a">Kim, S., <b>Song, C.</b>, Kim, M., and Lyu, S.</span>
+          <span class="v">KSCE Busan–Ulsan–Gyeongnam Convention</span>
+          <span class="flag award">Best Paper Award</span>
+        </span></li>
+        <li><span class="yr">2026</span><span class="it">
+          <span class="t">Cross-sectional velocity distribution of two-phase flow under varying flow conditions</span>
+          <span class="a"><b>Song, C.</b>, Kim, S., Kim, M., and Lyu, S.</span>
+          <span class="v">KSCE Busan–Ulsan–Gyeongnam Convention</span>
+        </span></li>
+        <li><span class="yr">2026</span><span class="it">
+          <span class="t">Morphological change of a natural channel under flood-season effects</span>
+          <span class="a">Kim, M., Kim, S., <b>Song, C.</b>, and Lyu, S.</span>
+          <span class="v">KWRA Annual Conference</span>
+        </span></li>
+        <li><span class="yr">2026</span><span class="it">
+          <span class="t">Frequency-dependent energy density distribution of bubble-induced turbulence in horizontal water–air pipe flow</span>
+          <span class="a"><b>Song, C.</b>, Kim, S., Kim, M., and Lyu, S.</span>
+          <span class="v">KWRA Annual Conference</span>
+          <span class="flag award">Excellent Presentation Award</span>
+        </span></li>
+        <li><span class="yr">2025</span><span class="it">
+          <span class="t">Experimental study on the change in conveyance capacity of a horizontal circular pipe with air inflow rate</span>
+          <span class="a">Lyu, S., <b>Song, C.</b>, Kim, S., and Kim, M.</span>
+          <span class="v">KSCE Annual Conference</span>
+        </span></li>
+        <li><span class="yr">2025</span><span class="it">
+          <span class="t">Survey of hydraulic and morphological characteristics in the lower Miho River</span>
+          <span class="a">Kim, M., Kim, S., <b>Song, C.</b>, and Lyu, S.</span>
+          <span class="v">KSCE Annual Conference</span>
+        </span></li>
+        <li><span class="yr">2025</span><span class="it">
+          <span class="t">Inundation risk assessment of a coastal city using a runoff model</span>
+          <span class="a">Kim, M., Kim, S., <b>Song, C.</b>, and Ko, J.</span>
+          <span class="v">KSCE Busan–Ulsan–Gyeongnam Convention</span>
+        </span></li>
+        <li><span class="yr">2025</span><span class="it">
+          <span class="t">Image-based measurement of the velocity structure of water–air plug flow in a horizontal pipe</span>
+          <span class="a">Ko, J., <b>Song, C.</b>, Kim, S., Kim, M., and Lyu, S.</span>
+          <span class="v">Korean Society of Ecology and Infrastructure Engineering Conference</span>
+        </span></li>
+        <li><span class="yr">2025</span><span class="it">
+          <span class="t">Inundation simulation of a coastal city using a runoff model</span>
+          <span class="a">Kim, S., Kim, M., <b>Song, C.</b>, and Ko, J.</span>
+          <span class="v">KWRA Annual Conference</span>
+          <span class="flag award">Excellent Presentation Award</span>
+        </span></li>
+        <li><span class="yr">2025</span><span class="it">
+          <span class="t">Experimental study on the conveyance capacity of water–air two-phase flow in a horizontal pipe</span>
+          <span class="a"><b>Song, C.</b>, Kim, M., Kim, S., Ko, J., and Lyu, S.</span>
+          <span class="v">KWRA Annual Conference</span>
+          <span class="flag award">Excellent Presentation Award</span>
+        </span></li>
+        <li><span class="yr">2024</span><span class="it">
+          <span class="t">Measurement of the flow structure of air–water two-phase flow in a horizontal pipe</span>
+          <span class="a">Ko, J., Choi, S., <b>Song, C.</b>, and Lyu, S.</span>
+          <span class="v">KSCE Annual Conference</span>
+        </span></li>
+        <li><span class="yr">2024</span><span class="it">
+          <span class="t">Seasonal stratification characteristics of a large river</span>
+          <span class="a">Choi, S., Ko, J., <b>Song, C.</b>, Kim, Y., Kim, D., and Lyu, S.</span>
+          <span class="v">KWRA Annual Conference</span>
+        </span></li>
+        <li><span class="yr">2024</span><span class="it">
+          <span class="t">Low-flow discharge estimation using image processing techniques</span>
+          <span class="a"><b>Song, C.</b> and Lyu, S.</span>
+          <span class="v">KWRA Annual Conference</span>
+        </span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="awards">
+    <div class="wrap">
+      <div class="sec-head"><h2>Honors &amp; Awards</h2></div>
+      <ul class="list awards">
+        <li><span class="yr">2026</span><span class="it"><span class="n">Best Paper Award</span><span class="d">Korean Society of Civil Engineers (KSCE), Busan–Ulsan–Gyeongnam Convention</span><span class="p">Pressure measurement under air inflow in a deep underground drainage tunnel model</span></span></li>
+        <li><span class="yr">2026</span><span class="it"><span class="n">Outstanding Student Paper Award</span><span class="d">Journal of Korea Water Resources Association, KWRA</span><span class="p">Evaluation of effective flow area in horizontal two-phase flow using frequency analysis</span></span></li>
+        <li><span class="yr">2026</span><span class="it"><span class="n">Excellent Presentation Award</span><span class="d">Korea Water Resources Association (KWRA) Annual Conference</span><span class="p">Frequency-dependent energy density distribution of bubble-induced turbulence in horizontal water–air pipe flow</span></span></li>
+        <li><span class="yr">2026</span><span class="it"><span class="n">Excellence Award</span><span class="d">KWRA TV Content Competition, Korea Water Resources Association</span></span></li>
+        <li><span class="yr">2025</span><span class="it"><span class="n">Excellent Presentation Award</span><span class="d">Korea Water Resources Association (KWRA) Annual Conference</span><span class="p">Experimental study on the conveyance capacity of water–air two-phase flow in a horizontal pipe</span></span></li>
+        <li><span class="yr">2025</span><span class="it"><span class="n">Excellent Presentation Award</span><span class="d">Korea Water Resources Association (KWRA) Annual Conference</span><span class="p">Inundation simulation of a coastal city using a runoff model</span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="experience">
+    <div class="wrap">
+      <div class="sec-head"><h2>Research Experience</h2></div>
+
+      <p class="sub">Research Projects</p>
+      <ul class="list">
+        <li><span class="yr">2026</span><span class="it">
+          <span class="t">Precision monitoring of sedimentary environment changes in national rivers</span>
+          <span class="a">National Institute of Environmental Research (NIER), Ministry of Environment · Lead institution: Seoul National University</span>
+          <span class="v">Apr 2026 – present · Participating researcher</span>
+        </span></li>
+        <li><span class="yr">2025–26</span><span class="it">
+          <span class="t">Detailed survey of the sedimentary environment in the Geum River basin</span>
+          <span class="a">National Institute of Environmental Research (NIER), Ministry of Environment · Lead institution: Seoul National University</span>
+          <span class="v">Apr 2025 – Mar 2026 · Participating researcher</span>
+        </span></li>
+        <li><span class="yr">2024–</span><span class="it">
+          <span class="t">Development of technologies for improving the conveyance capacity and advancing the design of underground infrastructure for urban flood response</span>
+          <span class="a">Ministry of Climate, Energy and Environment (managed by KEITI), RS-2024-00397821 · Lead institution: Korea Institute of Civil Engineering and Building Technology (KICT) · Changwon National University PI: Prof. Siwan Lyu</span>
+          <span class="v">2024 – present · Participating researcher: air behavior and two-phase flow control for flow stabilization and hydraulic performance</span>
+        </span></li>
+        <li><span class="yr">2024–</span><span class="it">
+          <span class="t">Development of flood safety assessment technology for longitudinal water resources facilities considering physical changes in river environments</span>
+          <span class="a">Ministry of Climate, Energy and Environment (managed by KEITI), RS-2024-00332494 · PI: Prof. Siwan Lyu</span>
+          <span class="v">2024 – present · Participating researcher</span>
+        </span></li>
+        <li><span class="yr">2024–25</span><span class="it">
+          <span class="t">Investigation of inflow streams and mixing behavior in Paldang Lake for water quality management</span>
+          <span class="a">Han River Basin Management Committee · Lead institution: Myongji University</span>
+          <span class="v">Jul 2024 – Jul 2025 · Participating researcher</span>
+        </span></li>
+        <li><span class="yr">2024–25</span><span class="it">
+          <span class="t">Development of a self-improving smart-city flood prevention system</span>
+          <span class="a">Ulsan–Gyeongnam Regional Innovation Platform, Smart Community Project Group · PI: Prof. Siwan Lyu</span>
+          <span class="v">2024 – 2025 (1 year) · Graduate student researcher: test-bed operation, runoff modeling with automatically measured discharge data</span>
+        </span></li>
+        <li><span class="yr">2023–24</span><span class="it">
+          <span class="t">Development of an image-based automatic discharge measurement technique for smart-city disaster prevention systems</span>
+          <span class="a">Ulsan–Gyeongnam Regional Innovation Platform, Smart Community Project Group · PI: Prof. Siwan Lyu</span>
+          <span class="v">Jun 2023 – Feb 2024 · Undergraduate researcher</span>
+        </span></li>
+        <li><span class="yr">2022–23</span><span class="it">
+          <span class="t">Development of a smart water management infrastructure system linking automatic monitoring networks and models</span>
+          <span class="a">Ulsan–Gyeongnam Regional Innovation Platform, Smart Community Project Group · PI: Prof. Siwan Lyu</span>
+          <span class="v">Aug 2022 – Mar 2023 · Undergraduate researcher: field monitoring, sensor data acquisition, data-processing algorithms and numerical modeling</span>
+        </span></li>
+      </ul>
+
+      <p class="sub">Positions &amp; Programs</p>
+      <ul class="list">
+        <li><span class="yr">2023</span><span class="it">
+          <span class="t">Student Researcher, Gyeongsang National University</span>
+          <span class="v">Data analysis on road infrastructure investment and economic development</span>
+        </span></li>
+        <li><span class="yr">2023</span><span class="it">
+          <span class="t">Student-Led Overseas Training Program (USG), Netherlands and United Kingdom</span>
+          <span class="v">Field study of coastal flood defense infrastructure, including the Oosterschelde storm surge barrier (Delta Works), the Port of Rotterdam and the Thames Barrier</span>
+        </span></li>
+        <li><span class="yr">2022</span><span class="it">
+          <span class="t">Summer Intern, Korea Authority of Land &amp; Infrastructure Safety</span>
+          <span class="v">Jul 2022 (4 weeks) · Supported seismic performance evaluation records for bridges and public facilities</span>
+        </span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <div class="wrap">
+      <div class="sec-head"><h2>Contact</h2></div>
+      <div class="contact">
+        <p class="k">Email</p>
+        <p style="user-select: all;">songchaebiin@gmail.com</p>
+        <p class="k" style="margin-top: 14px;">ORCID</p>
+        <p><a href="https://orcid.org/0009-0007-7133-9991" target="_blank" rel="noopener">orcid.org/0009-0007-7133-9991</a></p>
+        <p class="k" style="margin-top: 14px;">Address</p>
+        <p>Hydraulic Engineering Laboratory, Department of Civil Engineering, Changwon National University<br>20 Changwondaehak-ro, Uichang-gu, Changwon, Gyeongnam 51140, Republic of Korea</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Chaebin Song · Last updated October 2026</div>
+</footer>
+
+</body>
+</html>
